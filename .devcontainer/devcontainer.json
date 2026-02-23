@@ -1,0 +1,26 @@
+{
+  "name": "check-in-summarizer",
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile",
+    "args": {
+      "SUMMARIZER_DEV": "${localEnv:GITHUB_USER}${localEnv:USERNAME}"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "xdebug.php-pack",
+        "yzhang.markdown-all-in-one"
+      ],
+      "settings": {
+        "workbench.sideBar.location": "right"
+      }
+    }
+  },
+  "postCreateCommand": "sh /app/.devcontainer/postCreate.sh",
+  "postStartCommand": "sh /app/.devcontainer/postStart.sh"
+}
